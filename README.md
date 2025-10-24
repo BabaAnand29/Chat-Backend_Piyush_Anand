@@ -1,6 +1,6 @@
 # REAL-TIME CHAT API — Real-Time Chat Backend (FastAPI + Firebase)
 
-## 🧩 Overview
+## Overview
 
 **REAL-TIME CHAT API** is a real-time chat backend built using **FastAPI** and **Firebase Realtime Database**.  
 It enables secure, event-driven communication where users authenticate through Firebase Auth, exchange messages instantly via WebSockets, and benefit from features like typing indicators and read receipts.
@@ -9,22 +9,22 @@ This project was developed as part of an internship assignment focused on evalua
 
 ---
 
-## 🚀 Features
+## Features
 
 | **Category** | **Feature** | **Status** |
 |---------------|-------------|-------------|
-| Authentication | Firebase Auth — user register/login and JWT verification for protected routes | ✅ |
-| Chat Rooms | Create and list chat rooms | ✅ |
-| Messaging | Send and list messages (stored in Firebase RTDB) | ✅ |
-| Real-Time Updates | WebSocket (`/ws/rooms/{room_id}`) for instant message broadcasting | ✅ |
-| Read Receipts | Track and acknowledge message reads | ✅ |
-| Typing Indicators | Real-time “user is typing” notifications | ✅ (bonus) |
-| Secure Access | All endpoints protected by Firebase JWT verification | ✅ |
-| Documentation | Swagger UI and Postman Collection included | ✅ |
+| Authentication | Firebase Auth — user register/login and JWT verification for protected routes | Done |
+| Chat Rooms | Create and list chat rooms | Done |
+| Messaging | Send and list messages (stored in Firebase RTDB) | Done |
+| Real-Time Updates | WebSocket (`/ws/rooms/{room_id}`) for instant message broadcasting | Done(Bonus) |
+| Read Receipts | Track and acknowledge message reads | Done(Bonus) |
+| Typing Indicators | Real-time “user is typing” notifications | Done(Bonus) |
+| Secure Access | All endpoints protected by Firebase JWT verification | Done |
+| Documentation | Swagger UI and Postman Collection included | Done |
 
 ---
 
-## ⚙️ Tech Stack
+## Tech Stack
 
 - **FastAPI** – Asynchronous Python framework for building high-performance APIs  
 - **Uvicorn** – ASGI server to run the FastAPI backend  
@@ -36,27 +36,27 @@ This project was developed as part of an internship assignment focused on evalua
 
 ---
 
-## 🛠️ Setup & Installation
+## Setup & Installation
 
-### 1️⃣ Clone Repository
+### 1️. Clone Repository
 ```bash
 git clone https://github.com/<your-username>/norman-main.git
 cd norman-main
 ```
 
-### 2️⃣ Create Virtual Environment
+### 2️. Create Virtual Environment
 ```bash
 python -m venv .venv
 .\.venv\Scripts\activate       # For Windows
 # source .venv/bin/activate    # For Mac/Linux
 ```
 
-### 3️⃣ Install Dependencies
+### 3️. Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4️⃣ Configure Firebase
+### 4️. Configure Firebase
 - Create a **Firebase project**.  
 - Enable **Email/Password Authentication** under **Authentication → Sign-in method**.  
 - Create a **Realtime Database** in test mode for local testing.  
@@ -72,18 +72,18 @@ Add your Firebase configuration and other required details/variables to your `.e
 FIREBASE_DB_URL = "https://<your-project-id>.firebaseio.com/"
 ```
 
-### 5️⃣ Run the Server
+### 5️. Run the Server
 ```bash
 uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 ```
 
-### 6️⃣ Access API Documentation  
+### 6️. Access API Documentation  
 Open your browser and visit:  
-👉 [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+ [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
 ---
 
-## 🔐 Authentication (Firebase ID Token)
+##  Authentication (Firebase ID Token)
 
 Use Firebase Authentication to log in and obtain an **idToken** for authorized API access.
 
@@ -117,7 +117,7 @@ in WebSocket URLs.
 
 ---
 
-## 🔗 REST API — Quick Setup & Testing
+##  REST API — Quick Setup & Testing
 
 ### Prerequisites
 - Server running:
@@ -136,7 +136,7 @@ in WebSocket URLs.
 
 ---
 
-### ✅ Test via Swagger (localhost)
+###  Test via Swagger (localhost)
 Visit: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)  
 Click **Authorize** → paste:
 ```
@@ -152,7 +152,7 @@ Bearer <YOUR_ID_TOKEN>
 
 ---
 
-### ✅ Test via Postman (localhost)
+###  Test via Postman (localhost)
 
 #### A) Collection Setup
 - Open collection → **Auth tab** → Bearer Token = your `idToken`.  
@@ -183,7 +183,7 @@ If:
 
 ---
 
-### 🔎 Example Direct URLs (localhost)
+###  Example Direct URLs (localhost)
 
 | **Action** | **Method** | **URL** |
 |-------------|-------------|----------|
@@ -205,7 +205,7 @@ Content-Type: application/json
 
 ---
 
-## 📦 Deliverable (Postman)
+##  Deliverable (Postman)
 
 The REST endpoints collection required by the assignment is included in this repo:  
 ```
@@ -214,14 +214,14 @@ Postman/FastAPI Realtime Chat (REST).postman_collection.json
 
 ---
 
-## 🔌 WebSocket Usage (Postman)
+##  WebSocket Usage (Postman)
 
 ### Prerequisites
 - Server running  
 - Existing `room_id` in Firebase  
 - Fresh Firebase `idToken` tokens expire (~60 minutes).
 
-### 1️⃣ Get a fresh Firebase ID token
+### 1️. Get a fresh Firebase ID token
 POST:
 ```
 https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=<YOUR_WEB_API_KEY>
@@ -234,7 +234,7 @@ Click Send → copy idToken from the response.
 
 ---
 
-### 2️⃣ Connect Two WebSocket Clients
+### 2️. Connect Two WebSocket Clients
 
 We’ll use two WS tabs connected to the same room.
 
@@ -260,7 +260,7 @@ If 404 → the room doesn’t exist; create the room or check the id.
 
 ---
 
-### 3️⃣ Verify new Message Broadcast over WebSocket
+### 3️. Verify new Message Broadcast over WebSocket
 
 Now we’ll send a message via REST and watch both WS tabs receive it instantly
 
@@ -293,7 +293,7 @@ Both WS tabs should receive:
 If the REST call is 200 but WS shows nothing, check the Troubleshooting list at the end.
 ---
 
-## 💬 Typing Indicator — Test Plan
+##  Typing Indicator — Test Plan
 
 The typing feature sends lightweight WS frames so other users in the same room see “user is typing…”.
 
@@ -356,7 +356,7 @@ It should flip to true on typing start and false on stop/disconnect.
 
 ---
 
-## 🏷️ Read Receipts (Optional)
+## Read Receipts (Optional)
 
 If your WS supports read receipts via read_upto:
 1. In WebSocket Tab A, send:
@@ -374,7 +374,7 @@ rooms/<ROOM_ID>/messages/<message_id>/read_by/<TabA_UID> = true
 
 ---
 
-## 🧰 Troubleshooting
+## Troubleshooting
 
 | **Issue** | **Fix** |
 |-------------|---------|
@@ -386,7 +386,7 @@ rooms/<ROOM_ID>/messages/<message_id>/read_by/<TabA_UID> = true
 
 ---
 
-## 📁 Postman Collection
+## Postman Collection
 
 Exportable Postman collection included at:  
 ```
@@ -395,7 +395,7 @@ Postman/FastAPI Realtime Chat (REST).postman_collection.json
 
 ---
 
-## 👨‍💻 Author
+## Author
 
 **Piyush Anand**    
 📧 piyush200anand@gmail.com  
