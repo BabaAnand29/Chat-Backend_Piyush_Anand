@@ -209,7 +209,7 @@ Content-Type: application/json
 
 The REST endpoints collection required by the assignment is included in this repo:  
 ```
-postman/fastapi-realtime-chat-rest.postman_collection.json
+Postman/FastAPI Realtime Chat (REST).postman_collection.json
 ```
 
 ---
@@ -397,8 +397,7 @@ Postman/FastAPI Realtime Chat (REST).postman_collection.json
 
 ## 👨‍💻 Author
 
-**Piyush Anand**  
-Internship Project  
+**Piyush Anand**    
 📧 piyush200anand@gmail.com  
 
 ---
