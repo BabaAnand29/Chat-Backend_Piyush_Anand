@@ -40,8 +40,8 @@ This project was developed as part of an internship assignment focused on evalua
 
 ### 1️. Clone Repository
 ```bash
-git clone https://github.com/<your-username>/norman-main.git
-cd norman-main
+git clone https://github.com/BabaAnand29/Chat-Backend_Piyush_Anand.git
+cd Chat-Backend_Piyush_Anand
 ```
 
 ### 2️. Create Virtual Environment
