@@ -306,19 +306,19 @@ The typing feature sends lightweight WS frames so other users in the same room s
 3.	Click Send.
 
 Expected:
-o	Tab A receives:
+Tab A receives:
 ```json
 { "type": "typing_ack", "value": true }
 ```
 
-	Tab B receives:
+Tab B receives:
 ```json
 { "type": "typing", "user_id": "<TabA_UID>", "value": true }
 ```
 
 **Stop typing (Tab A → Tab B should clear it)**
 
-1.	In WebSocket Tab A, send:
+1. In WebSocket Tab A, send:
 ```json
 { "type": "typing", "value": false }
 ```
@@ -337,7 +337,7 @@ Tab B receives:
 
 Disconnect cleanup:
 
-1.	In WebSocket Tab A, click the Disconnect icon 
+1.	In WebSocket  Tab A, click the Disconnect icon 
 
 2.	Expected in Tab B:
 
