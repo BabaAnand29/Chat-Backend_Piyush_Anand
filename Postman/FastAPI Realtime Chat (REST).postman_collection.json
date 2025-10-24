@@ -1,0 +1,151 @@
+{
+	"info": {
+		"_postman_id": "848daa91-2efa-404b-a89f-2bdfd9ba53a6",
+		"name": "FastAPI Realtime Chat (REST)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49281018",
+		"_collection_link": "https://piyush400anand-6235049.postman.co/workspace/30fe3df0-044d-477e-8d81-9f7e5e383721/collection/49281018-848daa91-2efa-404b-a89f-2bdfd9ba53a6?action=share&source=collection_link&creator=49281018"
+	},
+	"item": [
+		{
+			"name": "Create room",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"name\": \"General\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/rooms/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"rooms",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List rooms",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/rooms/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"rooms",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send message",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"text\": \"Hello Piyush Anand!\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/rooms/{{room_id}}/messages",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"rooms",
+						"{{room_id}}",
+						"messages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List messages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/rooms/{{room_id}}/messages",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"rooms",
+						"{{room_id}}",
+						"messages"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{idToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": ""
+		},
+		{
+			"key": "idToken",
+			"value": ""
+		},
+		{
+			"key": "room_id",
+			"value": ""
+		}
+	]
+}
